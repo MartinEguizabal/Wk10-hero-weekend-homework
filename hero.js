@@ -10,7 +10,11 @@ Hero.prototype.sayName = function(){
 };
 
 Hero.prototype.eatFood = function(food){
-  this.health += food.value;
-}
+  if(this.food === food.name){
+    this.health += (food.value *1.5);
+  } else {
+    this.health += food.value;
+  };
+};
 
 module.exports = Hero;

@@ -28,6 +28,11 @@ describe("Hero", function(){
   it("can eat", function(){
     hero1.eatFood(food3);
     assert.strictEqual(hero1.health, 7);
+  });
+
+  it("can eat favourite food", function(){
+    hero1.eatFood(food1);
+    assert.strictEqual(hero1.health, 14);
   })
 
 });
