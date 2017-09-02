@@ -17,4 +17,20 @@ Hero.prototype.eatFood = function(food){
   };
 };
 
+Hero.prototype.countTasks = function(){
+  return this.tasks.length;
+};
+
+Hero.prototype.addTask = function(task){
+  this.tasks.push(task);
+};
+
+Hero.prototype.sortUrgency = function(task){
+  var urgencyRanked = task.urgency.sort(function(a, b){
+    return (b.price - a.price);
+  });
+  // console.log(urgencyRanked);
+  return urgencyRanked;
+};
+
 module.exports = Hero;

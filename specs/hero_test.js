@@ -11,6 +11,9 @@ describe("Hero", function(){
   var food3;
   var food4;
   var food5;
+  var task1;
+  var task2;
+  var task3;
 
   beforeEach(function(){
     hero1 = new Hero("Frank", 2, "steak");
@@ -19,6 +22,9 @@ describe("Hero", function(){
     food3 = new Food("rabbit", 5);
     food4 = new Food("cheese burger", 6);
     food5 = new Food("slurpy", 3);
+    task1 = new Task(3, 6, "gold coin", false);
+    task2 = new Task(7, 2, "silver coin", false);
+    task3 = new Task(4, 8, "diamond", false);
   });
 
   it("can say name", function(){
@@ -33,6 +39,19 @@ describe("Hero", function(){
   it("can eat favourite food", function(){
     hero1.eatFood(food1);
     assert.strictEqual(hero1.health, 14);
-  })
+  });
+
+  it("count tasks starts at 0", function(){
+    assert.strictEqual(hero1.countTasks(), 0);
+  });
+
+  it("can add task", function(){
+    hero1.addTask(task1);
+    assert.strictEqual(hero1.countTasks(), 1);
+  });
+
+  it("can sort task by urgency", function(){
+
+  });
 
 });
