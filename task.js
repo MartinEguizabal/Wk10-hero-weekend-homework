@@ -13,5 +13,9 @@ Task.prototype.completed = function(status){
   this.task_complete = status;
 };
 
+Task.prototype.printTask = function(){
+  return "Difficulty: " + this.difficulty + ", Urgency: " + this.urgency + ", Reward: " + this.reward + ", Completed: " + this.task_complete;
+}
+
 module.exports = Task;
 

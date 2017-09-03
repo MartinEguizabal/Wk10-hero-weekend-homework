@@ -51,7 +51,10 @@ describe("Hero", function(){
   });
 
   it("can sort task by urgency", function(){
-
+    hero1.addTask(task1);
+    hero1.addTask(task2);
+    hero1.addTask(task3);
+    assert.strictEqual(hero1.sortByUrgency()[0], task3);
   });
 
 });

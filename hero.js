@@ -25,11 +25,11 @@ Hero.prototype.addTask = function(task){
   this.tasks.push(task);
 };
 
-Hero.prototype.sortUrgency = function(task){
-  var urgencyRanked = task.urgency.sort(function(a, b){
-    return (b.price - a.price);
+Hero.prototype.sortByUrgency = function(){
+  var urgencyRanked = this.tasks.sort(function(a, b){
+    return (b.urgency - a.urgency);
   });
-  // console.log(urgencyRanked);
+  console.log(urgencyRanked);
   return urgencyRanked;
 };
 

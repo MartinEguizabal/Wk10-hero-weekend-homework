@@ -21,4 +21,8 @@ describe("Task", function(){
     task1.completed(true);
     assert.strictEqual(task1.checkStatus(), true);
   })
+
+  it("can print tasks", function(){
+    assert.strictEqual(task1.printTask(), "Difficulty: 3, Urgency: 6, Reward: gold coin, Completed: false");
+  });
 });
