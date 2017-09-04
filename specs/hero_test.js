@@ -2,6 +2,7 @@ var assert = require("assert");
 var Hero = require("../hero.js");
 var Task = require("../task.js");
 var Food = require("../food.js");
+var Rat = require("../rat.js");
 
 describe("Hero", function(){
 
@@ -14,17 +15,21 @@ describe("Hero", function(){
   var task1;
   var task2;
   var task3;
+  var rat1;
+  var rat2;
 
   beforeEach(function(){
     hero1 = new Hero("Frank", 2, "steak");
-    food1 = new Food("steak", 8);
-    food2 = new Food("grass", 1);
-    food3 = new Food("rabbit", 5);
-    food4 = new Food("cheese burger", 6);
-    food5 = new Food("slurpy", 3);
+    food1 = new Food("steak", 8, false);
+    food2 = new Food("grass", 1, false);
+    food3 = new Food("rabbit", 5, false);
+    food4 = new Food("cheese burger", 6, false);
+    food5 = new Food("slurpy", 3, false);
     task1 = new Task(3, 6, "gold coin", false);
     task2 = new Task(7, 2, "silver coin", false);
     task3 = new Task(4, 8, "diamond", false);
+    rat1 = new Rat("Ralph");
+    rat2 = new Rat("Tom");
   });
 
   it("can say name", function(){
@@ -57,4 +62,23 @@ describe("Hero", function(){
     assert.strictEqual(hero1.sortByUrgency()[0], task3);
   });
 
+  it("can view incomplete tasks", function(){
+    task1.completed();
+    hero1.addTask(task1);
+    hero1.addTask(task2);
+    assert.strictEqual(hero1.viewTasksByCompletion(false)[0], "Difficulty: 7, Urgency: 2, Reward: silver coin, Completed: false");
+  });
+
+  // it("can view complete tasks", function(){
+  //   hero1.addTask(task2);
+  //   hero1.addTask(task3);
+  //   task3.completed();
+  //   assert.strictEqual(hero1.viewTasksByCompletion(true)[0], "Difficulty: 4, Urgency: 8, Reward: diamond, Completed: true");
+  // });
+
+  it("hero eats poisonous food", function(){
+    rat1.touchFood(food2);
+    hero1.eatFood(food2);
+    assert.strictEqual(hero1.health, 1);
+  });
 });
